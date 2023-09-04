@@ -11,4 +11,5 @@ export const CONFIG_VARIABLES = {
   },
   PORT: +process.env.PORT || 3000,
   SLACK_BOT_CHANNEL: process.env.SLACK_BOT_CHANNEL || 'D05QV36TW5Q',
+  MAX_MESSAGES: 50
 }
