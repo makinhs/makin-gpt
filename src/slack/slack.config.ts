@@ -21,7 +21,7 @@ app.command("/alfred", async ({ command, ack, say }) => {
         });
         const chatResponse = await sendMessage(command.user_id, command.text);
         say({
-          text: chatResponse || 'something went wrong',
+          text: `Alfred: ${chatResponse}` || 'Alfred: something went wrong',
           channel: ALFRED_CHANNEL_ID,
         });
       }
