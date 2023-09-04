@@ -4,7 +4,7 @@ A simple project that shows how to integrate chat-gpt and slack bot
 
 There's no guarantees on Alfred assistant answers. It's just a simple project to show how to integrate chat-gpt and slack bot.
 
-Use by your own risk.
+Use at your own risk
 
 ## Chatgpt 
 
