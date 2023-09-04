@@ -9,6 +9,6 @@ export const CONFIG_VARIABLES = {
     user: "user",
     assistant: 'assistant'
   },
-  PORT: process.env.PORT || 3000,
+  PORT: +process.env.PORT || 3000,
   SLACK_BOT_CHANNEL: process.env.SLACK_BOT_CHANNEL || 'D05QV36TW5Q',
 }
