@@ -2,6 +2,10 @@
 
 A simple project that shows how to integrate chat-gpt and slack bot
 
+There's no guarantees on Alfred assistant answers. It's just a simple project to show how to integrate chat-gpt and slack bot.
+
+Use by your own risk.
+
 ## Chatgpt 
 
 You need to have a paid account on [openai](https://platform.openai.com/) to use this project.
@@ -24,3 +28,17 @@ APP_TOKEN=REPLACE_YOURS
 PORT=3000
 SLACK_BOT_CHANNEL=REPLACE_YOURS
 ```
+
+## Run the project
+
+```
+npm install
+npm start
+```
+
+You should be able to see the slackbot in your slack workspace. We use the command as "/alfred"
+
+Example: `/alfred Who are you`
+
+![Response sample](docs/images/hello_alfred.png)
+
