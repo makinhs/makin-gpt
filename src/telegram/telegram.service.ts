@@ -3,7 +3,7 @@ import TelegramBot from 'node-telegram-bot-api';
 import { sendMessage } from '../openai/openai.service';
 import cron from 'node-cron';
 
-type BOT_MODEL = 'alfred' | 'yaga-yaga' | 'virgo' | 'capricorn';
+type BOT_MODEL = 'alfred' | 'yaga-yaga' | 'virgo' | 'capricorn' | 'scorpio';
 
 const userRequestLimits = new Map();
 
@@ -21,6 +21,8 @@ function getToken(botModel: BOT_MODEL) {
         return CONFIG_VARIABLES.TELEGRAM.VIRGO_TOKEN;
       case 'capricorn':
         return CONFIG_VARIABLES.TELEGRAM.CAPRICORN_TOKEN;
+      case 'scorpio':
+        return CONFIG_VARIABLES.TELEGRAM.SCORPIO_TOKEN;
     default:
       throw new Error(`Unknown bot model: ${botModel}`);
   }

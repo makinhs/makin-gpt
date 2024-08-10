@@ -20,5 +20,6 @@ export const CONFIG_VARIABLES = {
     ALFRED_TOKEN: process.env.TELEGRAM_ALFRED_YAGA_TOKEN || '',
     VIRGO_TOKEN: process.env.TELEGRAM_VIRGO_TOKEN || '',
     CAPRICORN_TOKEN: process.env.TELEGRAM_CAPRICORN_TOKEN || '',
+    SCORPIO_TOKEN: process.env.TELEGRAM_SCORPIO_TOKEN || '',
   }
 }
