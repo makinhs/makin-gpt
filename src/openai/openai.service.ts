@@ -3,10 +3,14 @@ import { YAGA_YAGA_ASSISTANT } from './assistants/yagayaga.assistant';
 import OpenAI from 'openai/index';
 import { CONFIG_VARIABLES } from '../common/config';
 import { CHAT_COMMANDS } from './commands';
+import { VIRGO_ASSISTANT } from './assistants/virgo.assistant';
+import { CAPRICORN_ASSISTANT } from './assistants/capricorn.assistant';
 
 const userMessagesPerModel = new Map([
   ['alfred', ALFRED_ASSISTANT],
   ['yaga-yaga', YAGA_YAGA_ASSISTANT],
+  ['virgo', VIRGO_ASSISTANT],
+  ['capricorn', CAPRICORN_ASSISTANT],
 ]);
 
 const user_messages = new Map();

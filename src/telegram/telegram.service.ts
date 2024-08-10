@@ -1,8 +1,9 @@
 import { CONFIG_VARIABLES } from '../common/config';
 import TelegramBot from 'node-telegram-bot-api';
 import { sendMessage } from '../openai/openai.service';
+import cron from 'node-cron';
 
-type BOT_MODEL = 'alfred' | 'yaga-yaga';
+type BOT_MODEL = 'alfred' | 'yaga-yaga' | 'virgo' | 'capricorn';
 
 const userRequestLimits = new Map();
 
@@ -16,6 +17,10 @@ function getToken(botModel: BOT_MODEL) {
       return CONFIG_VARIABLES.TELEGRAM.ALFRED_TOKEN;
     case 'yaga-yaga':
       return CONFIG_VARIABLES.TELEGRAM.YAGA_YAGA_TOKEN;
+      case 'virgo':
+        return CONFIG_VARIABLES.TELEGRAM.VIRGO_TOKEN;
+      case 'capricorn':
+        return CONFIG_VARIABLES.TELEGRAM.CAPRICORN_TOKEN;
     default:
       throw new Error(`Unknown bot model: ${botModel}`);
   }
@@ -50,6 +55,23 @@ export const startTelegramBot = (botModel: BOT_MODEL) => {
   try {
     const token = getToken(botModel);
     const bot = new TelegramBot(token, { polling: true });
+
+    // Setup the cron job for daily messages
+    if (botModel === 'virgo' || botModel === 'capricorn') {
+      cron.schedule('0 8 * * *', async () => {
+        console.log(`Sending daily messages for ${botModel}`);
+
+        // Loop through all users in the request limits map
+        for (const [userId] of userRequestLimits) {
+          const dailyMessage =  await sendMessage(userId, 'Tell me my daily horoscope', botModel);
+          if (dailyMessage) {
+            await bot.sendMessage(userId, dailyMessage);
+          }3
+        }
+      }, {
+        timezone: "Europe/Rome"  // Set your timezone here
+      });
+    }
 
     bot.on('message', async (msg) => {
       const chatId = msg.chat.id;
